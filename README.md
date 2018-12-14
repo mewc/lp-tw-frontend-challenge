@@ -1,44 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Liveperson Coding Challenge:
 
-## Available Scripts
+by (mewc)[https://github.com/mewc]
+contact: (jasmith@liveperson.com)[mailto:jasmith@liveperson.com] (jasmith-lp)[https://github.com/jasmith-lp]
 
-In the project directory, you can run:
+## Instructions for running
+**A live version is available, hosted on heroku. (lp-tw-frontend-challenge)[https://lp-tw-frontend-challenge.herokuapp.com/]**
+**The backend is available too, hosted on heroku. (lp-tw-backend-challenge)[https://lp-tw-backend-challenge.herokuapp.com/]**
 
-### `npm start`
+**For semi-automated deploy:**
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**For manual deploy (standard dev deploy)**
+1. clone the repo
+1. `yarn install`
+1. `yarn start`
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Requirements
 
-### `npm run build`
+### Part 1
+ 
+**Create a NodeJS/Express application that can search Twitter for #liveperson via API's and store the result into a SQL Lite database.** 
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This includes:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+1. Generate a SQLite database in NodeJS
+1. Using NodeJS & Express, call to Twitter API's to search and collect results for any tweets containing #liveperson.
+1. Make sure to have proper error handling for if Twitter's API isn't available
+1. Error handling if you get an unexpected result
+1. Publish these results into an SQLite database via NodeJS using Express for easier handling of the SQLite DB. 
+1. Make sure to check that you don't double up on entries and that you have appropriate error handling
+1. Build a basic frontend to render the results stored within the SQLite database
+ 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Part 2:
+ **Explain how the solution fits together and any positives / difficulties you had completing the project.**
 
-### `npm run eject`
+### Part 3:
+ **Upload the solution to a GitHub repository & provide build instructions/scripts.**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+ 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Extras (if you have time):
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If you wish to add in functionality feel free, it's not needed for the submission of the core coding challenge. Some examples of extras we have seen in the past are:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Completed unit tests
+1. Angular frontend with results listed and styled
+1. Cleanup of code and organisation into classes/prototypes based on collections of related functions.
 
-## Learn More
+Again, this is only if you have time, what we are looking for is clean, human readable code that has thought through any considerations that may be needed to write this app.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ 
+
+### Final Submission Expected Components:
+
+NodeJS script and SQL Lite database delivered VIA a GitHub repository.
+
+Email write-up explaining how the solution fits together and any positives / difficulties you had.
+
+ 
