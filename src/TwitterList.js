@@ -23,7 +23,7 @@ class TwitterList extends Component {
 
     componentWillMount() {
         const tweetEndpoint = (process.env.BACKEND_URL) ? process.env.BACKEND_URL + ':' + process.env.PORT + '/twitter'
-            : 'http://lp-tw-backend-challenge.herokuapp.com/twitter';
+            : 'https://lp-tw-backend-challenge.herokuapp.com/twitter';
         // :'http://localhost:3333/twitter';
         axios.get(tweetEndpoint)
             .then((response) => {
