@@ -20,8 +20,8 @@ class TwitterList extends Component {
         const list = tweets.map((item) => {
                 return <Grid item xs={4} lg={4} key={item.tweet_id}>
                     <Paper className={classes.root} elevation={1} xs={6} alignItems={'center'} style={{margin: '20px'}}>
-                    <Typography variant="h5" component="h3">
-                        {item.user.user_name}
+                    <Typography variant="h5">
+                        {item.user_name}
                     </Typography>
                     <Typography component="p">
                         {item.tweet}

@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
-
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 const styles = {
@@ -33,7 +33,10 @@ class App extends Component {
             tweets: [],
             local: true
         }
+    }
 
+    componentWillMount() {
+        this.getTweets();
     }
 
     changeLocal() {
@@ -56,7 +59,7 @@ class App extends Component {
         })
     }
 
-    getTweets(){
+    getTweets() {
 
         const tweetEndpoint = (this.state.local) ?
             'http://localhost:3333/twitter' + this.state.endpoint
@@ -88,15 +91,21 @@ class App extends Component {
                             <Typography variant="h6" color="inherit" className={classes.grow}>
                                 LIVEPERSON TWITTER CHALLENGE APP
                             </Typography>
-                            <Button color="inherit" onClick={() => {
-                                this.changeEndpoint('/db')
-                            }}>db</Button>
+                            {(local) ?
+                                <Button color="inherit" onClick={() => {
+                                    this.changeEndpoint('/db')
+                                }}>db</Button>
+                             : <Tooltip title="Disabled - heroku doesn't persist sqlite files">
+                                <Button color="inherit" style={{color: 'lightBlue', textDecoration: 'underline'}}
+                                        onClick={() => {this.changeEndpoint('/db')}}>db</Button>
+                            </Tooltip>
+                            }
                             <Button color="inherit" onClick={() => {
                                 this.changeEndpoint('/')
                             }}>api</Button>
                             <Button variant={"outlined"} color="inherit" onClick={() => {
                                 this.changeLocal()
-                            }}>db: {(local)?'local':'hosted'}</Button>
+                            }}>db: {(local) ? 'local' : 'hosted'}</Button>
                         </Toolbar>
                     </AppBar>
                 </div>
