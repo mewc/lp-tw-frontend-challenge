@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import TwitterList from "./TwitterList";
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import axios from "axios";
 
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 const styles = {
     root: {
@@ -26,25 +25,85 @@ const styles = {
 
 
 class App extends Component {
-  render() {
-      const { classes } = this.props;
 
-      return (
-      <div className="App">
-          <div className={classes.root}>
-              <AppBar position="static">
-                  <Toolbar>
-                      <Typography variant="h6" color="inherit" className={classes.grow}>
-                          LIVEPERSON TWITTER CHALLENGE APP
-                      </Typography>
-                      <Button color="inherit"><a href={'https://mewc.info'} style={{color: '#fff'}}>mewc</a></Button>
-                  </Toolbar>
-              </AppBar>
-          </div>
-        <TwitterList/>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            endpoint: '/',
+            tweets: [],
+            local: true
+        }
+
+    }
+
+    changeLocal() {
+
+        this.setState({
+            ...this.state,
+            local: !this.state.local
+        }, () => {
+            this.getTweets();
+        })
+    }
+
+    changeEndpoint(value) {
+
+        this.setState({
+            ...this.state,
+            endpoint: value
+        }, () => {
+            this.getTweets();
+        })
+    }
+
+    getTweets(){
+
+        const tweetEndpoint = (this.state.local) ?
+            'http://localhost:3333/twitter' + this.state.endpoint
+            : 'https://lp-tw-backend-challenge.herokuapp.com/twitter' + this.state.endpoint;
+        axios.get(tweetEndpoint)
+            .then((response) => {
+                console.log(response);
+                this.setState({
+                    tweets: response.data,
+                })
+            })
+            .catch((log) => {
+                console.log(log)
+            })
+    }
+
+
+    render() {
+        const {classes} = this.props;
+        const {local, tweets} = this.state;
+
+        return (
+            <div className="App">
+                <div className={classes.root}>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Button color="inherit"><a href={'https://mewc.info'}
+                                                       style={{color: '#fff'}}>mewc</a></Button>
+                            <Typography variant="h6" color="inherit" className={classes.grow}>
+                                LIVEPERSON TWITTER CHALLENGE APP
+                            </Typography>
+                            <Button color="inherit" onClick={() => {
+                                this.changeEndpoint('/db')
+                            }}>db</Button>
+                            <Button color="inherit" onClick={() => {
+                                this.changeEndpoint('/')
+                            }}>api</Button>
+                            <Button variant={"outlined"} color="inherit" onClick={() => {
+                                this.changeLocal()
+                            }}>db: {(local)?'local':'hosted'}</Button>
+                        </Toolbar>
+                    </AppBar>
+                </div>
+                <TwitterList tweets={tweets}/>
+            </div>
+        );
+    }
 }
 
 export default withStyles(styles)(App);
