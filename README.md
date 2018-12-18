@@ -1,22 +1,21 @@
 # Liveperson Coding Challenge:
 
-by (mewc)[https://github.com/mewc]
-contact: (jasmith@liveperson.com)[mailto:jasmith@liveperson.com] (jasmith-lp)[https://github.com/jasmith-lp]
+by [mewc](https://github.com/mewc)
+contact: [jasmith@liveperson.com](mailto:jasmith@liveperson.com) [jasmith-lp](https://github.com/jasmith-lp)
 
 ## Instructions for running
-**A live version is available, hosted on heroku. (lp-tw-frontend-challenge)[https://lp-tw-frontend-challenge.herokuapp.com/]**
-**The backend is available too, hosted on heroku. (lp-tw-backend-challenge)[https://lp-tw-backend-challenge.herokuapp.com/]**
-
-**For semi-automated deploy:**
+**A live version is available, hosted on heroku. [lp-tw-frontend-challenge](https://lp-tw-frontend-challenge.herokuapp.com/)**
+**The backend is available too, hosted on heroku. [lp-tw-backend-challenge](https://lp-tw-backend-challenge.herokuapp.com/)**
 
 **For manual deploy (standard dev deploy)**
 1. clone the repo
 1. `yarn install`
 1. `yarn start`
 
+all other info found in README.md on backend repo.
 
 
-## Requirements
+## Client Requirements
 
 ### Part 1
  
